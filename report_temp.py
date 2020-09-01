@@ -3,6 +3,7 @@
 import os
 import glob
 import time
+import datetime
 
 os.system('modprobe w1-gpio')
 os.system('modprobe w1-therm')
@@ -27,8 +28,15 @@ def read_temp():
         temp_string = lines[1][equals_pos+2:]
         temp_c = float(temp_string) / 1000.0
         temp_f = temp_c * 9.0 / 5.0 + 32.0
-        return temp_c, temp_f
+        return temp_c
 
 while True:
-	print(read_temp())
-	time.sleep(1)
+    t = read_temp()
+    v = str(datetime.datetime.now()) + ", " + str(t) + "\n"
+    today = datetime.datetime.today()
+    fname = today.strftime('%Y%m%d') + ".csv"
+    with open(fname, "a+") as myfile:
+        myfile.write(v)
+
+	#print(read_temp())
+	time.sleep(60)
