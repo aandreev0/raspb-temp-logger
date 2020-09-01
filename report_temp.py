@@ -34,7 +34,7 @@ while True:
     t = read_temp()
     v = str(datetime.datetime.now()) + ", " + str(t) + "\n"
     today = datetime.datetime.today()
-    fname = today.strftime('%Y%m%d') + ".csv"
+    fname = today.strftime('%Y%m%d') + ".txt"
     with open(fname, "a+") as myfile:
         myfile.write(v)
 
