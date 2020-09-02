@@ -44,7 +44,7 @@ try:
     today = datetime.datetime.today()
     v = str(today) + ", " + str(t) + "\n"
 
-    fname = today.strftime('%Y%m%d') + ".txt"
+    fname = "/home/pi/raspb-temp-logger/" + today.strftime('%Y%m%d') + ".txt"
     with open(fname, "a+") as myfile:
         myfile.write(v)
     print("["+ str(today) +"] Recorded temp: " + str(t))
