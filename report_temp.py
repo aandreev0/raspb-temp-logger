@@ -33,11 +33,13 @@ def read_temp():
         return temp_c
 
 def watchdog_ping():
+    print("Sending watchdog ping...")
     url = "http://aandreev.net/?raspberyPi_ping"
     res = requests.get(url)
     print(res.status_code)
 
 try:
+    watchdog_ping()
     t = read_temp()
     v = str(datetime.datetime.now()) + ", " + str(t) + "\n"
     today = datetime.datetime.today()
