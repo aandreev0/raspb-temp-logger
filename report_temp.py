@@ -5,6 +5,8 @@ import glob
 import time
 import datetime
 import sys
+import requests
+
 os.system('modprobe w1-gpio')
 os.system('modprobe w1-therm')
 
@@ -29,6 +31,12 @@ def read_temp():
         temp_c = float(temp_string) / 1000.0
         temp_f = temp_c * 9.0 / 5.0 + 32.0
         return temp_c
+
+def watchdog_ping():
+    url = "http://aandreev.net/?raspberyPi_ping"
+    res = requests.get(url)
+    print(res.status_code)
+
 try:
     t = read_temp()
     v = str(datetime.datetime.now()) + ", " + str(t) + "\n"
