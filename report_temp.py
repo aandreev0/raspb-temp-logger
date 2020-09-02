@@ -34,20 +34,20 @@ def read_temp():
 
 def watchdog_ping():
     print("Sending watchdog ping...")
-    url = "http://aandreev.net/?raspberyPi_ping"
+    url = "http://aandreev.net/?raspberry_pi_ping"
     res = requests.get(url)
     print(res.status_code)
 
 try:
     watchdog_ping()
     t = read_temp()
-    v = str(datetime.datetime.now()) + ", " + str(t) + "\n"
     today = datetime.datetime.today()
+    v = str(today) + ", " + str(t) + "\n"
+
     fname = today.strftime('%Y%m%d') + ".txt"
     with open(fname, "a+") as myfile:
         myfile.write(v)
-
-    print("["+ str(datetime.datetime.now()) +"] Recorded temp: " + str(t))
+    print("["+ str(today) +"] Recorded temp: " + str(t))
 except:
     e = sys.exc_info()[0]
     print(str(e))
