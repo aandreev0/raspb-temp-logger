@@ -6,6 +6,7 @@ import time
 import datetime
 import sys
 import requests
+import render_plot
 
 os.system('modprobe w1-gpio')
 os.system('modprobe w1-therm')
@@ -48,6 +49,10 @@ try:
     with open(fname, "a+") as myfile:
         myfile.write(v)
     print("["+ str(today) +"] Recorded temp: " + str(t))
+    
+    render_plot.SaveCapLogPNG(fname)
+
+
 except:
     e = sys.exc_info()[0]
     print(str(e))
