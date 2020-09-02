@@ -4,7 +4,7 @@ import os
 import glob
 import time
 import datetime
-
+import sys
 os.system('modprobe w1-gpio')
 os.system('modprobe w1-therm')
 
@@ -29,8 +29,7 @@ def read_temp():
         temp_c = float(temp_string) / 1000.0
         temp_f = temp_c * 9.0 / 5.0 + 32.0
         return temp_c
-
-while True:
+try:
     t = read_temp()
     v = str(datetime.datetime.now()) + ", " + str(t) + "\n"
     today = datetime.datetime.today()
@@ -38,5 +37,7 @@ while True:
     with open(fname, "a+") as myfile:
         myfile.write(v)
 
-	#print(read_temp())
-	time.sleep(60)
+    print("["+ str(datetime.datetime.now()) +"] Recorded temp: " + str(t))
+except:
+    e = sys.exc_info()[0]
+    print(str(e))
