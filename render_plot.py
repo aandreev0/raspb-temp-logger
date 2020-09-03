@@ -31,8 +31,8 @@ def SaveCapLogPNG(fname):
         dtes_str.append(datetime.strptime(l[0], '%Y-%m-%d %H:%M:%S.%f'))
         ts.append(float(l[1]))
 
-    ax.set_xticks(dtes[1::20])
-    ax.set_xticklabels([d.strftime('%H:%M') for d in dtes_str[1::20]])
+    ax.set_xticks(dtes[0::int(len(dtes)/10)])
+    ax.set_xticklabels([d.strftime('%H:%M') for d in dtes_str[0::int(len(dtes)/10)]])
     ax.plot(dtes, ts,'--', label='Temperature on '+ d.strftime("%y%m%d"))
 
     handles, labels = ax.get_legend_handles_labels()
