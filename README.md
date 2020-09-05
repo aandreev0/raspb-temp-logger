@@ -1,4 +1,4 @@
-# RaspnberryPi-based temperature recorder with web-interface
+# RaspberryPi-based temperature recorder with web-interface
 
 RaspberryPi temperature logger with web-interface
 
@@ -23,3 +23,7 @@ Now we can make it web-accessible:
   3. Setup nginx web server to serve content of the `~/raspb-temp-logger/` (need more detail)
   4. Change firewall rules for external access of `*.txt` and `*.png` files (need more details)
   5. Work with your IT department in order for making this interface safe for the organization
+
+# Using several sensors
+
+DS18b20 allows installation of several sensors on the same wires. This will create several virtual devices that RaspberryPi can probe for temperature reading. To be filled-in after testing.
