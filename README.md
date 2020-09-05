@@ -18,7 +18,7 @@ Wiring is copied from [Konstantin Dimitrov](https://create.arduino.cc/projecthub
 
 At this point you will have logs of temperature accessible, for example at `~/raspb-temp-logger/20200901.txt` in CSV format and `~/raspb-temp-logger/20200901.txt.png` in image (plot) format.
 
-Now we can make content it web-accessible:
+Now we can make it web-accessible:
 
   3. Setup nginx web server to serve content of the `~/raspb-temp-logger/` (need more detail)
   4. Change firewall rules for external access of `*.txt` and `*.png` files (need more details)
