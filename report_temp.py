@@ -27,6 +27,7 @@ def read_light():
 
     avg_light = avg_light / 2.0;
     ser.close()
+    print("Averaged light:" + str(avg_light))
     return avg_light
 
 def read_temp_raw():
