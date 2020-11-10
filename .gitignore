@@ -3,3 +3,7 @@
 *.txt
 *.pyc
 .DS_Store
+bin/*
+lib/*
+include/*
+pyenv.cfg
