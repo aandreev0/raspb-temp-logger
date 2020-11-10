@@ -55,7 +55,7 @@ def watchdog_ping():
     print(res.status_code)
 
 try:
-    watchdog_ping()
+    # watchdog_ping()
     t = read_temp()
     today = datetime.datetime.today()
     light_lvl = read_light()
