@@ -7,6 +7,7 @@ import datetime
 import sys
 import requests
 import render_plot
+import serial
 
 os.system('modprobe w1-gpio')
 os.system('modprobe w1-therm')
@@ -14,6 +15,19 @@ os.system('modprobe w1-therm')
 base_dir = '/sys/bus/w1/devices/'
 device_folder = glob.glob(base_dir + '28*')[0] # only picks 1st device
 device_file = device_folder + '/w1_slave'
+light_arduino = '/dev/'
+
+def read_light():
+    ser = serial.Serial('/dev/ttyACM0')  # open serial port
+    avg_light = 0;
+    for i in range(0,5):
+       line = ser.readline()   # read a '\n' terminated line
+       if i>2:
+          avg_light += int(line.strip())
+
+    avg_light = avg_light / 2.0;
+    ser.close()
+    return avg_light
 
 def read_temp_raw():
     f = open(device_file, 'r')
@@ -43,7 +57,8 @@ try:
     # watchdog_ping()
     t = read_temp()
     today = datetime.datetime.today()
-    v = str(today) + ", " + str(t) + "\n"
+    light_lvl = read_light()
+    v = str(today) + ", " + str(t) +', '+str(light_lvl)+ "\n"
 
     fname = "/home/pi/raspb-temp-logger/" + today.strftime('%Y%m%d') + ".txt"
     with open(fname, "a+") as myfile:
