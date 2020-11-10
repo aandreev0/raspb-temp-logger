@@ -47,10 +47,11 @@ def SaveCapLogPNG(fname):
     ax.legend(loc=2)
     ax.set_ylabel('Temperature, deg C',color=color)
     ax.set_xlabel('Date')
+    ax.tick_params(axis='y', labelcolor=color)
 
     color = 'tab:red'
     ax2 = ax.twinx()  # instantiate a second axes that shares the same x-axis
-    ax2.set_ylabel('Light', color=color)  # we already handled the x-label with ax1
+    ax2.set_ylabel('Light, a.u.', color=color)  # we already handled the x-label with ax1
     ax2.plot(dtes, ls,'--', label='Light on '+ d.strftime("%y%m%d"),color=color)
     ax2.tick_params(axis='y', labelcolor=color)
 
