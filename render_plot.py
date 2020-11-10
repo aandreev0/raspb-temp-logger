@@ -44,7 +44,7 @@ def SaveCapLogPNG(fname):
     ax.plot(dtes, ts,'--', label='Temperature on '+ d.strftime("%y%m%d"),color=color)
 
     handles, labels = ax.get_legend_handles_labels()
-    ax.set_ylabel('Temperature, °C',color=color)
+    ax.set_ylabel('Temperature, deg C',color=color)
     ax.set_xlabel('Date')
     ax.tick_params(axis='y', labelcolor=color)
 
