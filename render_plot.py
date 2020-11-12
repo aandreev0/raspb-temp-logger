@@ -24,7 +24,7 @@ def SaveCapLogPNG(fname):
               light = 0
           data.append([dte, t, light])
 
-
+    plt.rcParams.update({'font.size': 6})
     fig, ax = plt.subplots()
 
     dtes = []
@@ -37,9 +37,9 @@ def SaveCapLogPNG(fname):
         ts.append(float(li[1]))
         ls.append(float(li[2]))
     color = 'tab:blue'
-
-    ax.set_xticks(dtes[0::int(len(dtes)/10)])
-    ax.set_xticklabels([d.strftime('%H:%M') for d in dtes_str[0::int(len(dtes)/10)]])
+    tick_interval = int(len(dtes)/20)
+    ax.set_xticks(dtes[0::tick_interval])
+    ax.set_xticklabels([d.strftime('%H:%M') for d in dtes_str[0::tick_interval]])
     d = dtes_str[0]
     ax.plot(dtes, ts,'--', label='Temperature on '+ d.strftime("%y%m%d"),color=color)
 
@@ -58,7 +58,7 @@ def SaveCapLogPNG(fname):
 
     fig.autofmt_xdate()
 
-    fig.savefig(fname+".png")
+    fig.savefig(fname+".png", dpi=600)
 
 
 if __name__ == "__main__":
