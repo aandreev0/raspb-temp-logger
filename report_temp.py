@@ -12,9 +12,6 @@ import serial
 os.system('modprobe w1-gpio')
 os.system('modprobe w1-therm')
 
-base_dir = '/sys/bus/w1/devices/'
-device_folder = glob.glob(base_dir + '28*')[0] # only picks 1st device
-device_file = device_folder + '/w1_slave'
 light_arduino = '/dev/'
 
 def read_light():
@@ -31,13 +28,24 @@ def read_light():
     return avg_light
 
 def read_temp_raw():
-    f = open(device_file, 'r')
-    lines = f.readlines()
-    f.close()
-    return lines
+    base_dir = '/sys/bus/w1/devices/'
+    devs = glob.glob(base_dir + '28*')
+    if len(devs) > 0:
+        device_folder = devs[0] # only picks 1st device
+        device_file = device_folder + '/w1_slave'
+
+        f = open(device_file, 'r')
+        lines = f.readlines()
+        f.close()
+        return lines
+    else:
+        return false
 
 def read_temp():
     lines = read_temp_raw()
+    if ~lines:
+        return 0.0
+
     while lines[0].strip()[-3:] != 'YES':
         time.sleep(0.2)
         lines = read_temp_raw()
