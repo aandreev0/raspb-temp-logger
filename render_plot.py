@@ -6,10 +6,15 @@ from matplotlib.dates import date2num
 from datetime import datetime
 
 def SaveCapLogPNG(fname):
+    temps_list = list()
+    if not isinstance(fname, list):
+        fname = [fname]
 
-    with open(fname,'r') as f:
-        reader = csv.reader(f)
-        temps_list = list(reader)
+    for fn in fname:
+        with open(fn,'r') as f:
+            reader = csv.reader(f)
+            temps_list.extend(list(reader))
+    fname_s = '-'.join(fname)
 
     data = []
 
@@ -54,11 +59,11 @@ def SaveCapLogPNG(fname):
     ax2.plot(dtes, ls,'-',linewidth=1, label='Light on '+ d.strftime("%y%m%d"),color=color)
     ax2.tick_params(axis='y', labelcolor=color)
 
-    plt.title('Recording date: '+ d.strftime("%y/%m/%d"))
+    plt.title('Recording start date: '+ d.strftime("%y/%m/%d"))
 
     fig.autofmt_xdate()
 
-    fig.savefig(fname+".png", dpi=600)
+    fig.savefig(fname_s+".png", dpi=600)
 
 
 if __name__ == "__main__":
