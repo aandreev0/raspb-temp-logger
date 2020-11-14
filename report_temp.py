@@ -39,12 +39,12 @@ def read_temp_raw():
         f.close()
         return lines
     else:
-        return false
+        return False
 
 def read_temp():
     lines = read_temp_raw()
-    if ~lines:
-        return 0.0
+    if not lines:
+        return 0
 
     while lines[0].strip()[-3:] != 'YES':
         time.sleep(0.2)
