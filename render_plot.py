@@ -43,6 +43,8 @@ def SaveCapLogPNG(fname):
         ls.append(float(li[2]))
     color = 'tab:blue'
     tick_interval = int(len(dtes)/20)
+    if tick_interval < 1:
+        tick_interval = 1
     ax.set_xticks(dtes[0::tick_interval])
     ax.set_xticklabels([d.strftime('%H:%M') for d in dtes_str[0::tick_interval]])
     d = dtes_str[0]
