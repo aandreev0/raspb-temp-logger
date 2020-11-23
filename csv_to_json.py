@@ -8,11 +8,7 @@ def csv_to_array(fname):
             reader = csv.reader(f)
             temps_list.extend(list(reader))
     data = [[],[],[]]
-    ii = 0
     for temp_line in temps_list:
-        ii+=1
-        if ii>3:
-            break
         if len(temp_line)>0:
           dte  = temp_line[0] # date
           t  = temp_line[1] # cap in
