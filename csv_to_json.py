@@ -25,8 +25,6 @@ def csv_to_array(fname):
           data[2].append(light)
     return data
 
-f = ['20201116.txt', '20201117.txt', '20201118.txt', '20201119.txt', '20201120.txt', '20201121.txt', '20201122.txt']
-
 f = []
 today = date.today()
 for d in range(16,1+int(today.strftime("%d"))):
