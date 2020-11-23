@@ -1,6 +1,7 @@
 import csv
+base_dir = '/home/pi/raspb-temp-logger/' # needed for calling from the crontab
+
 def csv_to_array(fname):
-    base_dir = '/home/pi/raspb-temp-logger/' # needed for calling from the crontab
     temps_list = list()
     if not isinstance(fname, list):
         fname = [fname]
@@ -40,6 +41,6 @@ trace_light = "var trace_light = { \
    yaxis: 'y2', \
  };"
 
-fn = open("data.js", "w")
+fn = open(base_dir + "data.js", "w")
 n = fn.write(trace_temp + "\n" +trace_light)
 fn.close()
