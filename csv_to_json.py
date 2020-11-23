@@ -29,7 +29,7 @@ f = ['20201116.txt', '20201117.txt', '20201118.txt', '20201119.txt', '20201120.t
 
 f = []
 today = date.today()
-for d in range(16,int(today.strftime("%d"))):
+for d in range(16,1+int(today.strftime("%d"))):
   f.append('202011%02d.txt' % d)
 
 d = csv_to_array(f)
