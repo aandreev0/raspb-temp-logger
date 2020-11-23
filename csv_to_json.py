@@ -1,10 +1,11 @@
 import csv
 def csv_to_array(fname):
+    base_dir = '/home/pi/raspb-temp-logger/' # needed for calling from the crontab
     temps_list = list()
     if not isinstance(fname, list):
         fname = [fname]
     for fn in fname:
-        with open(fn,'r') as f:
+        with open(base_dir+fn,'r') as f:
             reader = csv.reader(f)
             temps_list.extend(list(reader))
     data = [[],[],[]]
