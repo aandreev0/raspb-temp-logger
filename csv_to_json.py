@@ -23,7 +23,6 @@ def csv_to_array(fname):
 
 f = ['20201116.txt', '20201117.txt', '20201118.txt', '20201119.txt', '20201120.txt', '20201121.txt', '20201122.txt']
 d = csv_to_array(f)
-print(d)
 
 trace_temp = "var trace_temp = { \
    x: ["+",".join(d[0])+"], \
