@@ -1,0 +1,51 @@
+<html>
+
+
+  <head>
+    <script src="plotly-latest.min.js"></script>
+    <script type="text/javascript" src="data.js"></script>
+  </head>
+
+  <body>
+    <h2>Recent data dump:</h2>
+
+    <div id="plot_container"></div>
+
+    <script type="text/javascript">
+      var data = [trace_temp, trace_light];
+      var layout = {
+        title: 'Double Y Axis Example',
+        yaxis: {title: 'Temperature'},
+        yaxis2: {
+          title: 'Light intensity',
+          titlefont: {color: 'rgb(148, 103, 189)'},
+          tickfont: {color: 'rgb(148, 103, 189)'},
+          overlaying: 'y',
+          side: 'right'
+        }
+      };
+      Plotly.newPlot('plot_container', data, layout);
+    </script>
+
+
+    <!--
+
+    var trace_temp = {
+      x: [1, 2, 3, 4],
+      y: [10, 15, 13, 17],
+      type: 'line',
+      name: 'Temp'
+    };
+
+    var trace_light = {
+      x: [1, 2, 3, 4],
+      y: [16, 5, 11, 9],
+      type: 'line',
+      yaxis: 'y2',
+      name: 'light'
+    };
+
+  -->
+  </body>
+
+</html>
