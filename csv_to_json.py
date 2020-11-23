@@ -1,4 +1,6 @@
 import csv
+from datetime import date
+
 base_dir = '/home/pi/raspb-temp-logger/' # needed for calling from the crontab
 
 def csv_to_array(fname):
@@ -24,6 +26,12 @@ def csv_to_array(fname):
     return data
 
 f = ['20201116.txt', '20201117.txt', '20201118.txt', '20201119.txt', '20201120.txt', '20201121.txt', '20201122.txt']
+
+f = []
+today = date.today()
+for d in range(16,int(today.strftime("%d"))):
+  f.append('202011%02d.txt' % d)
+
 d = csv_to_array(f)
 
 trace_temp = "var trace_temp = { \
