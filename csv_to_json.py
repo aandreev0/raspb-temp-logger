@@ -1,5 +1,5 @@
 import csv
-from datetime import date
+from datetime import date, timedelta
 
 base_dir = '/home/pi/raspb-temp-logger/' # needed for calling from the crontab
 
@@ -27,8 +27,10 @@ def csv_to_array(fname):
 
 f = []
 today = date.today()
-for d in range(16,1+int(today.strftime("%d"))):
-  f.append('202011%02d.txt' % d)
+s_date = date(2020,11,16)
+n_days = today - s_date
+for d in range(0, n_days.days+1):
+  f.append('%s.txt' % (s_date + timedelta(days=d)).strftime("%Y%m%d"))
 
 d = csv_to_array(f)
 
