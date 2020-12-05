@@ -2,16 +2,29 @@
 
 
   <head>
+
     <script src="plotly-latest.min.js"></script>
     <script type="text/javascript" src="data.js"></script>
+    <script type="text/javascript">
+
+    </script>
   </head>
 
   <body>
     <h2>Recent data, updated every 30 minutes</h2>
+    <i id="current_time"></i>
 
     <div id="plot_container"></div>
 
     <script type="text/javascript">
+      var currentdate = new Date();
+      var datetime = "Page loaded on " + currentdate.getDate() + "/"
+                    + (currentdate.getMonth()+1)  + "/"
+                    + currentdate.getFullYear() + " @ "
+                    + currentdate.getHours() + ":"
+                    + currentdate.getMinutes() + ":"
+                    + currentdate.getSeconds();
+      document.getElementById('current_time').innerHTML = datetime;
       var data = [trace_temp, trace_light];
       var layout = {
         title: 'Chen fish room sensor',
